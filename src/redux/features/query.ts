@@ -31,6 +31,7 @@ export interface Company {
 }
 
 export interface Post {
+  id: number;
   title: string;
   body: string;
   userId: number
@@ -58,7 +59,14 @@ export const postsApi = createApi({
         body,
       }),
     }),
+    updatePost: builder.mutation<void, Pick<Post, 'id'> & Partial<Post>>({
+      query: ({ id, ...patch }) => ({
+        url: `posts/${id}`,
+        method: "PUT",
+        body: patch
+      })
+    })
   }),
 });
 
-export const { usePostsQuery, usePostQuery ,useAddPostMutation} = postsApi;
+export const { usePostsQuery, usePostQuery, useAddPostMutation,useUpdatePostMutation } = postsApi;

@@ -3,6 +3,8 @@ import { Dashboard } from "./components/Dashboard/Dashboard";
 import { Data, HairColor } from "./components/Data/Data";
 import { createContext, useState } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 interface AppContextInterface {
   name: string;
   age: number;
@@ -31,6 +33,7 @@ export function App() {
   return (
     <>
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route
             path="/"
