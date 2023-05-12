@@ -30,6 +30,13 @@ export interface Company {
   bs: string;
 }
 
+export interface Post {
+  title: string;
+  body: string;
+  userId: number
+
+}
+
 export const postsApi = createApi({
   reducerPath: "postsApi",
   baseQuery: fetchBaseQuery({
@@ -43,7 +50,15 @@ export const postsApi = createApi({
     post: builder.query<Users, string>({
       query: (id) => `/users/${id}`,
     }),
+
+    addPost: builder.mutation<Post, Partial<Post>>({
+      query: (body) => ({
+        url: `/posts`,
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { usePostsQuery, usePostQuery } = postsApi;
+export const { usePostsQuery, usePostQuery ,useAddPostMutation} = postsApi;
