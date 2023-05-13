@@ -66,10 +66,6 @@ export const postsApi = createApi({
         body: patch
       })
     })
-
-
-
-    
     //delete post is yet to be added below
   }),
 });
